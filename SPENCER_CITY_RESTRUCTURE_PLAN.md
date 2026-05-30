@@ -191,3 +191,53 @@ Nashua, Salem NH, Windham, Derry, Hudson, Londonderry
 - WordPress Staging: /staging/4632/
 - Customer ID: 2513311774
 - Generated: 2026-05-30
+
+---
+
+## IMPLEMENTATION SCRIPTS
+
+### Phase 1: Create Tier 1 Ad Groups
+
+```python
+# create_tier1_adgroups.py
+TIER1_PLUMBING = [
+    ("Cambridge", 3984, "/plumbing/cambridge-plumber/"),
+    ("Arlington", 1500, "/plumbing/arlington-plumber/"),
+    ("Peabody", 1398, "/plumbing/peabody-plumber/"),
+    ("Danvers", 1014, "/plumbing/danvers-plumber/"),
+    ("Salem", 951, "/plumbing/salem-plumber/"),
+    # ... 14 more cities
+]
+
+TIER1_DRAINS = [
+    ("Peabody", 1528, "/drain-sewer/peabody-drain-sewer-services/"),
+    ("Cambridge", 1359, "/drain-sewer/cambridge-drain-sewer-services/"),
+    ("Salem", 1211, "/drain-sewer/salem-drain-sewer-services/"),
+    # ... 14 more cities
+]
+```
+
+### RSA Headlines Template
+
+```
+Tier 1 City Headlines (hardcoded):
+H1: {City} Plumber - Since 1981
+H2: #1 Rated Plumber in {City}
+H3: {City}'s Trusted Plumber
+H4: 24/7 Emergency Service
+H5: Same-Day Appointments
+H6: Licensed & Insured
+
+Tier 2 DKI Headlines:
+H1: {KeyWord:North Shore} Plumber
+H2: Trusted Local Plumber Since 1981
+```
+
+## ROLLOUT SCHEDULE
+
+| Week | Action |
+|------|--------|
+| Week 1 | Create PLUMBING Tier 1 ad groups (19 cities) |
+| Week 2 | Create DRAINS Tier 1 ad groups (17 cities) |
+| Week 3 | Monitor performance, pause old ad groups |
+| Week 4 | COOLING restructure (after pages live) |
