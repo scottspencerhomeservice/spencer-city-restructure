@@ -67,9 +67,9 @@ Ad Group: Plumber - Cambridge
 - Keyword: "cambridge plumber" [phrase]
 - Landing Page: /plumbing/cambridge-plumber/
 - RSA Headlines (all ≤30 chars):
-  - H1: Cambridge Plumber Since '81
+  - H1: Cambridge Plumber - Since 1981
   - H2: #1 Plumber in Cambridge MA
-  - H3: Cambridge's Best Plumber
+  - H3: Cambridge's Trusted Plumber
   - H4: 24/7 Emergency Service
   - H5: Same-Day Appointments
   - H6: Licensed & Insured
@@ -81,7 +81,7 @@ Ad Group: Plumber - North Shore
 - Landing Page: /plumbing/ (main service page)
 - RSA Headlines (with DKI, all ≤30 chars):
   - H1: {KeyWord:North Shore Plumber}
-  - H2: Local Plumber Since '81
+  - H2: Local Plumber Since 1981
   - H3: 24/7 Emergency Plumbing
 
 ---
@@ -123,7 +123,7 @@ Ad Group: Drain Cleaning - Peabody
   - H3: Clogged Drain? We Fix It
   - H4: Same-Day Service Available
   - H5: Camera Inspection Included
-  - H6: Licensed Since '81
+  - H6: Trusted Since 1981
 
 #### TIER 2 CITIES (40) - Grouped Ad Group
 
@@ -240,16 +240,16 @@ TIER1_DRAINS = [
 
 ```
 PLUMBING - Tier 1 (hardcoded):
-H1: {City} Plumber Since '81     (≤30)
+H1: {City} Plumber - Since 1981  (30 for 9-char cities)
 H2: #1 Plumber in {City} MA      (≤30)
-H3: {City}'s Best Plumber        (≤30)
+H3: {City}'s Trusted Plumber     (≤30)
 H4: 24/7 Emergency Service       (22)
 H5: Same-Day Appointments        (21)
 H6: Licensed & Insured           (19)
 
 PLUMBING - Tier 2 (DKI):
 H1: {KeyWord:North Shore Plumber}  (keyword replaces full phrase)
-H2: Local Plumber Since '81      (23)
+H2: Local Plumber Since 1981     (24)
 H3: 24/7 Emergency Plumbing      (23)
 
 DRAINS - Tier 1 (hardcoded):
@@ -258,7 +258,7 @@ H2: 24/7 Drain Service {City}    (≤30)
 H3: Clogged Drain? We Fix It     (24)
 H4: Same-Day Service Available   (26)
 H5: Camera Inspection Included   (27)
-H6: Licensed Since '81           (18)
+H6: Trusted Since 1981           (18)
 
 DRAINS - Tier 2 (DKI):
 H1: {KeyWord:Drain Cleaning}     (keyword replaces full phrase)
@@ -266,8 +266,8 @@ H2: 24/7 Emergency Drains        (21)
 H3: Fast Local Drain Service     (24)
 ```
 
-**Note**: For long city names (North Reading, Swampscott, Marblehead, Burlington), 
-use abbreviated templates: "{City} Plumber" (no suffix) to stay under 30 chars.
+**Long City Names** (North Reading, Swampscott, Marblehead, Burlington):
+Use "{City} Plumber | 1981" (28 chars max) instead of "- Since 1981" format.
 
 ## ROLLOUT SCHEDULE
 
