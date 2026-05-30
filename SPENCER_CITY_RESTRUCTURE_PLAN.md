@@ -66,9 +66,9 @@ This plan restructures Google Ads campaigns around a **tiered city model**:
 Ad Group: Plumber - Cambridge
 - Keyword: "cambridge plumber" [phrase]
 - Landing Page: /plumbing/cambridge-plumber/
-- RSA Headlines:
+- RSA Headlines (all ≤30 chars):
   - H1: Cambridge Plumber - Since 1981
-  - H2: #1 Rated Plumber in Cambridge
+  - H2: #1 Plumber in Cambridge MA
   - H3: Cambridge's Trusted Plumber
   - H4: 24/7 Emergency Service
   - H5: Same-Day Appointments
@@ -79,10 +79,10 @@ Ad Group: Plumber - Cambridge
 Ad Group: Plumber - North Shore
 - Keywords: "malden plumber", "saugus plumber", "north andover plumber", etc.
 - Landing Page: /plumbing/ (main service page)
-- RSA Headlines (with DKI):
-  - H1: {KeyWord:North Shore} Plumber
-  - H2: Trusted Local Plumber Since 1981
-  - H3: 24/7 Emergency Plumbing Service
+- RSA Headlines (with DKI, all ≤30 chars):
+  - H1: {KeyWord:North Shore Plumber}
+  - H2: Local Plumber Since 1981
+  - H3: 24/7 Emergency Plumbing
 
 ---
 
@@ -112,9 +112,28 @@ Ad Group: Plumber - North Shore
 | Burlington | $584 | 2 | $292 | /drain-sewer/burlington-drain-sewer-services/ |
 | Waltham | $558 | 3 | $186 | /drain-sewer/waltham-drain-sewer-services/ |
 
+#### Ad Group Structure Example - Drains
+
+Ad Group: Drain Cleaning - Peabody
+- Keyword: "peabody drain cleaning" [phrase]
+- Landing Page: /drain-sewer/peabody-drain-sewer-services/
+- RSA Headlines (all ≤30 chars):
+  - H1: Peabody Drain Cleaning
+  - H2: 24/7 Drain Service Peabody
+  - H3: Clogged Drain? We Fix It
+  - H4: Same-Day Service Available
+  - H5: Camera Inspection Included
+  - H6: Trusted Since 1981
+
 #### TIER 2 CITIES (40) - Grouped Ad Group
 
-Same structure - DKI headlines, main /drain-sewer/ landing page.
+Ad Group: Drain Cleaning - North Shore
+- Keywords: "methuen drain cleaning", "lawrence drain cleaning", etc.
+- Landing Page: /drain-sewer/
+- RSA Headlines (with DKI, all ≤30 chars):
+  - H1: {KeyWord:Drain Cleaning}
+  - H2: 24/7 Emergency Drains
+  - H3: Fast Local Drain Service
 
 ---
 
@@ -124,7 +143,7 @@ Same structure - DKI headlines, main /drain-sewer/ landing page.
 
 **BLOCKER**: City landing pages not live yet (404).
 
-#### TIER 1 CITIES (19) - Ready When Pages Go Live
+#### TIER 1 CITIES (18) - Ready When Pages Go Live
 
 | City | 30-Day Spend | Conv | CPA |
 |------|-------------|------|-----|
@@ -191,3 +210,70 @@ Nashua, Salem NH, Windham, Derry, Hudson, Londonderry
 - WordPress Staging: /staging/4632/
 - Customer ID: 2513311774
 - Generated: 2026-05-30
+
+---
+
+## IMPLEMENTATION SCRIPTS
+
+### Phase 1: Create Tier 1 Ad Groups
+
+```python
+# create_tier1_adgroups.py
+TIER1_PLUMBING = [
+    ("Cambridge", 3984, "/plumbing/cambridge-plumber/"),
+    ("Arlington", 1500, "/plumbing/arlington-plumber/"),
+    ("Peabody", 1398, "/plumbing/peabody-plumber/"),
+    ("Danvers", 1014, "/plumbing/danvers-plumber/"),
+    ("Salem", 951, "/plumbing/salem-plumber/"),
+    # ... 14 more cities
+]
+
+TIER1_DRAINS = [
+    ("Peabody", 1528, "/drain-sewer/peabody-drain-sewer-services/"),
+    ("Cambridge", 1359, "/drain-sewer/cambridge-drain-sewer-services/"),
+    ("Salem", 1211, "/drain-sewer/salem-drain-sewer-services/"),
+    # ... 14 more cities
+]
+```
+
+### RSA Headlines Template (All ≤30 chars)
+
+```
+PLUMBING - Tier 1 (hardcoded):
+H1: {City} Plumber - Since 1981  (30 for 9-char cities)
+H2: #1 Plumber in {City} MA      (≤30)
+H3: {City}'s Trusted Plumber     (≤30)
+H4: 24/7 Emergency Service       (22)
+H5: Same-Day Appointments        (21)
+H6: Licensed & Insured           (19)
+
+PLUMBING - Tier 2 (DKI):
+H1: {KeyWord:North Shore Plumber}  (keyword replaces full phrase)
+H2: Local Plumber Since 1981     (24)
+H3: 24/7 Emergency Plumbing      (23)
+
+DRAINS - Tier 1 (hardcoded):
+H1: {City} Drain Cleaning        (≤30)
+H2: 24/7 Drain Service {City}    (≤30)
+H3: Clogged Drain? We Fix It     (24)
+H4: Same-Day Service Available   (26)
+H5: Camera Inspection Included   (27)
+H6: Trusted Since 1981           (18)
+
+DRAINS - Tier 2 (DKI):
+H1: {KeyWord:Drain Cleaning}     (keyword replaces full phrase)
+H2: 24/7 Emergency Drains        (21)
+H3: Fast Local Drain Service     (24)
+```
+
+**Long City Names** (North Reading, Swampscott, Marblehead, Burlington):
+Use "{City} Plumber | 1981" (28 chars max) instead of "- Since 1981" format.
+
+## ROLLOUT SCHEDULE
+
+| Week | Action |
+|------|--------|
+| Week 1 | Create PLUMBING Tier 1 (19 cities) + Tier 2 (38 cities) ad groups |
+| Week 2 | Create DRAINS Tier 1 (17 cities) + Tier 2 (40 cities) ad groups |
+| Week 3 | Monitor performance, pause legacy ad groups after 7-day learning |
+| Week 4 | COOLING restructure (after pages live) - 18 Tier 1 + 48 Tier 2 |
